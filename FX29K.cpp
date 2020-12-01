@@ -23,7 +23,7 @@ void FX29::requestMeasurement(void) {
 uint16_t FX29::getRawBridgeData(void) {
   uint8_t bridgeData[2] = {0};
   read(_i2cPtr, _i2cAddr, bridgeData, 2);
-  return (bridgeData[0] << 8 | bridgeData[1]);
+  return ((bridgeData[0] << 8) | bridgeData[1]);
 }
 
 void write(TwoWire* i2cPtr, uint8_t i2cAddr, uint8_t* arr, uint8_t byteCount) {
