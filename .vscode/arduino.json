@@ -1,5 +1,0 @@
-{
-    "sketch": "FX29_for_Arduino.ino",
-    "board": "arduino:avr:nano",
-    "configuration": "cpu=atmega328"
-}
