@@ -26,6 +26,15 @@ uint16_t FX29::getRawBridgeData(void) {
   return (bridgeData[0] << 8 | bridgeData[1]);
 }
 
+float FX29::getPounds(void){
+  uint16_t bridgeData = getRawBridgeData();
+  return ((bridgeData - 1000) * _range / 14000.0); 
+}
+
+float FX29::getKilograms(void){
+  return getWeightLbf() / 2.205; 
+}
+
 void write(TwoWire* i2cPtr, uint8_t i2cAddr, uint8_t* arr, uint8_t byteCount) {
   i2cPtr->beginTransmission(i2cAddr);
   for (uint8_t i = 0; i < byteCount; i++) {
