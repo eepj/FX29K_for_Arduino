@@ -53,4 +53,5 @@ void FX29K::read(TwoWire* i2cPtr, uint8_t i2cAddr, uint8_t* arr, uint8_t byteCou
   for (uint8_t i = 0; i < byteCount; i++) {
     *(arr + i) = i2cPtr->read();
   }
+  i2cPtr->endTransmission();
 }
