@@ -51,6 +51,6 @@ void FX29K:: write(TwoWire* i2cPtr, uint8_t i2cAddr, uint8_t* arr, uint8_t byteC
 void FX29K::read(TwoWire* i2cPtr, uint8_t i2cAddr, uint8_t* arr, uint8_t byteCount) {
   i2cPtr->requestFrom(i2cAddr, byteCount);
   for (uint8_t i = 0; i < byteCount; i++) {
-    *arr = i2cPtr->read();
+    *(arr + i) = i2cPtr->read();
   }
 }
