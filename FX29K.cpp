@@ -5,6 +5,7 @@ FX29::FX29(uint8_t addr, uint8_t range, TwoWire* i2cPtr) {
   _i2cAddr = addr;
   _range = range;
   _i2cPtr = i2cPtr;
+  Wire.begin(_i2cAddr);
 }
 
 FX29::FX29(void) {
