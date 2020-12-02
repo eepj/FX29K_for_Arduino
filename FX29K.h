@@ -17,6 +17,7 @@ class FX29{
     FX29(void);
     FX29(uint8_t addr, uint8_t range, TwoWire* i2cPtr);
     ~FX29(void);
+    void begin(void);
     void requestMeasurement(void);
     uint16_t getRawBridgeData(void);
     float getPounds(void);
