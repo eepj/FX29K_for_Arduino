@@ -7,13 +7,14 @@ FX29K::FX29K(uint8_t addr, uint8_t range, TwoWire* i2cPtr) {
   _i2cPtr = i2cPtr;
 }
 
-FX29K::FX29K(void) {
-
+FX29K::FX29K(uint8_t addr, uint8_t range) {
+  _i2cAddr = addr;
+  _range = range;
 }
 
-FX29K::~FX29K(void) {
+FX29K::FX29K(void) {}
 
-}
+FX29K::~FX29K(void) {}
 
 void FX29K::begin(void){
     Wire.begin(_i2cAddr);
