@@ -27,7 +27,7 @@ void FX29::requestMeasurement(void) {
 uint16_t FX29::getRawBridgeData(void) {
   uint8_t bridgeData[2] = {0};
   read(_i2cPtr, _i2cAddr, bridgeData, 2);
-  return (bridgeData[0] << 8 | bridgeData[1]);
+  return ((bridgeData[0] << 8) | bridgeData[1]);
 }
 
 float FX29::getPounds(void){
@@ -50,6 +50,7 @@ void FX29:: write(TwoWire* i2cPtr, uint8_t i2cAddr, uint8_t* arr, uint8_t byteCo
 void FX29::read(TwoWire* i2cPtr, uint8_t i2cAddr, uint8_t* arr, uint8_t byteCount) {
   i2cPtr->requestFrom(i2cAddr, byteCount);
   for (uint8_t i = 0; i < byteCount; i++) {
-    *arr = i2cPtr->read();
+    *(arr + i) = i2cPtr->read();
   }
+  i2cPtr->endTransmission();
 }
