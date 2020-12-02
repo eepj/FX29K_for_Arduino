@@ -1,6 +1,6 @@
 #include "FX29K.h"
 
-FX29 scale(FX29K0_I2C_ADDR, 10, &Wire);
+FX29K scale(FX29K0, 0010, &Wire);
 
 void setup(){
   Serial.begin(115200);
