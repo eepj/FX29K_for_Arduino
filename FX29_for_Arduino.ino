@@ -5,15 +5,15 @@ FX29K scale(FX29K0, 0010, &Wire);
 void setup(){
   Serial.begin(115200);
   scale.begin();
-  Serial.println("Kilograms\tPounds\tRaw");
+  Serial.println("Grams\tPounds\tRaw");
   Serial.println("-------------------------------");
 }
 
 void loop(){
   uint16_t raw = scale.getRawBridgeData();
-  double kg = scale.getKilograms();
+  uint16_t g = scale.getGrams();
   double lb = scale.getPounds();
-  Serial.print(kg);
+  Serial.print(g);
   Serial.print("\t");
   Serial.print(lb);
   Serial.print("\t");

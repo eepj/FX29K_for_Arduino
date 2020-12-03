@@ -21,10 +21,12 @@ class FX29K{
     ~FX29K(void);
     void begin(void);
     void tare(void);
+    void tare(uint16_t samples);
     void requestMeasurement(void);
     uint16_t getRawBridgeData(void);
     double getPounds(void);
     double getKilograms(void);
+    uint16_t getGrams(void);
     void write(TwoWire* i2cPtr, uint8_t i2cAddr, uint8_t* arr, uint8_t byteCount);
     void read(TwoWire* i2cPtr, uint8_t i2cAddr, uint8_t* arr, uint8_t byteCount);
 };

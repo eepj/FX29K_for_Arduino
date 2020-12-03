@@ -32,6 +32,16 @@ void FX29K::tare(void) {
   _tare = sum / 10;
 }
 
+void FX29K::tare(uint16_t samples) {
+  requestMeasurement();
+  uint32_t sum = 0;
+  for (uint16_t i = 0; i < samples; i++) {
+    sum += getRawBridgeData();
+    delay(10);
+  }
+  _tare = sum / 10;
+}
+
 void FX29K::requestMeasurement(void) {
   uint8_t temp = 0;
   write(_i2cPtr, _i2cAddr, &temp, 0);
@@ -54,6 +64,10 @@ double FX29K::getPounds(void) {
 
 double FX29K::getKilograms(void) {
   return getPounds() / 2.205;
+}
+
+uint16_t FX29K::getGrams(void) {
+  return getPounds() * 2205;
 }
 
 void FX29K:: write(TwoWire* i2cPtr, uint8_t i2cAddr, uint8_t* arr, uint8_t byteCount) {
