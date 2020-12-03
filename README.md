@@ -48,7 +48,7 @@ void tare(uint16_t samples);
 * Read raw wheatstone bridge data with:
 ```ruby
 uint16_t getRawBridgeData(void);
-```ruby
+```
 * Read weight with any of the following:
 ```ruby
 double getPounds(void);
