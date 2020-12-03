@@ -1,5 +1,6 @@
 #ifndef FX29K_H
 #define FX29K_H
+#include <Arduino.h>
 #include <Wire.h>
 
 #define FX29K0 0x28

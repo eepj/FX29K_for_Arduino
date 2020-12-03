@@ -1,5 +1,4 @@
 #include "FX29K.h"
-#include <Arduino.h>
 #include <Wire.h>
 
 FX29K::FX29K(uint8_t addr, uint8_t range, TwoWire* i2cPtr) {
