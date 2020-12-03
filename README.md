@@ -2,7 +2,11 @@
 An Arduino library written for the FX29K digital load cells.
 
 ## Compatibility
-* This library is specifically written for and tested on an FX29K load cell. However, it should be compatible with both FX29K and FX29J digital load cells. FX292 and FX293 analog load cells are NOT supported.
+Supported models:
+* `FX29Kx-xxxx-xxxx-L` (Tested)
+* `FX29Jx-xxxx-xxxx-L` (Not tested)
+
+FX292 and FX293 analog load cells are *NOT* supported.
 
 ## Quick start
 ### Minimal connections
