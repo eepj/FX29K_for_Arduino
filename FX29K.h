@@ -10,12 +10,14 @@
 #define FX29K4 0x51
 
 class FX29K{
+
   private:
     uint8_t _i2cAddr = FX29K0;
     uint8_t _range = 0010;
     uint8_t _tare = 0;
     TwoWire* _i2cPtr = &Wire;
     FX29K(void);
+
   public:
     FX29K(uint8_t addr, uint8_t range);
     FX29K(uint8_t addr, uint8_t range, TwoWire* i2cPtr);
@@ -30,6 +32,7 @@ class FX29K{
     uint16_t getGrams(void);
     void write(TwoWire* i2cPtr, uint8_t i2cAddr, uint8_t* arr, uint8_t byteCount);
     void read(TwoWire* i2cPtr, uint8_t i2cAddr, uint8_t* arr, uint8_t byteCount);
+
 };
 
 #endif
