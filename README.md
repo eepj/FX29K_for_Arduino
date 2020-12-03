@@ -25,8 +25,8 @@ YELLOW ---------- SCL
 #### Declaration
 * Declare your object globally, with constructors:
 ```ruby  
-FX29K(uint8_t addr, uint8_t range);
-FX29K(uint8_t addr, uint8_t range, TwoWire* i2cPtr);
+FX29K::FX29K(uint8_t addr, uint8_t range);
+FX29K::FX29K(uint8_t addr, uint8_t range, TwoWire* i2cPtr);
 ```
 * Check your load cell's part number and find the parameter for the constructors.
 ```ruby
@@ -41,23 +41,23 @@ FX29K fx29k(FX29K0, 0010, &Wire);
 #### Initialization
 * In `setup()`, initialize your object:
 ```ruby
-void begin(void);
+void FX29K::begin(void);
 ```
 * Tare your load cell with:
 ```ruby
-void tare(void);
-void tare(uint16_t samples);
+void FX29K::tare(void);
+void FX29K::tare(uint16_t samples);
 ```
 #### Measurement
 * Read raw wheatstone bridge data with:
 ```ruby
-uint16_t getRawBridgeData(void);
+uint16_t FX29K::getRawBridgeData(void);
 ```
 * Read weight with any of the following:
 ```ruby
-double getPounds(void);
-double getKilograms(void);
-uint16_t getGrams(void);
+double FX29K::getPounds(void);
+double FX29K::getKilograms(void);
+uint16_t FX29K::getGrams(void);
 ```
 ### Misc
 * Refer to ./[`FX29K_for_Arduino.ino`](./FX29_for_Arduino.ino) and [datasheets](https://www.te.com/commerce/DocumentDelivery/DDEController?Action=showdoc&DocId=Data+Sheet%7FFX29%7FA5%7Fpdf%7FEnglish%7FENG_DS_FX29_A5.pdf%7FCAT-FSE0006) for further information.
