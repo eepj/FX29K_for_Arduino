@@ -43,7 +43,7 @@ uint16_t FX29K::getRawBridgeData(void) {
   return (bridgeData[0] << 8 | bridgeData[1]) & 0x3fff;
 }
 
-float FX29K::getPounds(void) {
+double FX29K::getPounds(void) {
   uint16_t bridgeData = getRawBridgeData();
   uint16_t net = bridgeData - _tare;
   if (net < 1000)
@@ -52,7 +52,7 @@ float FX29K::getPounds(void) {
     return ((net - 1000) * _range / 14000.0);
 }
 
-float FX29K::getKilograms(void) {
+double FX29K::getKilograms(void) {
   return getPounds() / 2.205;
 }
 
