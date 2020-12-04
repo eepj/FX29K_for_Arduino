@@ -15,13 +15,17 @@ class FX29K{
     uint8_t _i2cAddr = FX29K0;
     uint8_t _range = 0010;
     uint16_t _tare = 0;
+    char _unit = 'L';
     TwoWire* _i2cPtr = &Wire;
     FX29K(void);
 
   public:
     FX29K(uint8_t addr, uint8_t range);
     FX29K(uint8_t addr, uint8_t range, TwoWire* i2cPtr);
+    FX29K(uint8_t addr, uint8_t range, char unit);
+    FX29K(uint8_t addr, uint8_t range, char unit, TwoWire* i2cPtr);
     ~FX29K(void);
+    
     void begin(void);
     void tare(void);
     void tare(uint16_t samples);

@@ -3,8 +3,8 @@ An Arduino library written for the FX29K digital load cells.
 
 ## Compatibility
 Supported models:
-* `FX29Kx-xxxx-xxxx-L` (Tested)
-* `FX29Jx-xxxx-xxxx-L` (Not tested)
+* `FX29Kx-xxxx-xxxx-x` (Tested on an FX29K0-040B-0010-L)
+* `FX29Jx-xxxx-xxxx-x` (Not tested)
 
 FX292 and FX293 analog load cells are *NOT* supported.
 
@@ -27,16 +27,18 @@ YELLOW ---------- SCL
 ```ruby  
 FX29K::FX29K(uint8_t addr, uint8_t range);
 FX29K::FX29K(uint8_t addr, uint8_t range, TwoWire* i2cPtr);
+FX29K::FX29K(uint8_t addr, uint8_t range, char unit);
+FX29K::FX29K(uint8_t addr, uint8_t range, char unit, TwoWire* i2cPtr);
 ```
 * Check your load cell's part number and find the parameter for the constructors.
 ```ruby
-FX29Kx-xxxx-xxxx-L
-|____|      |__|
+FX29Kx-xxxx-xxxx-x
+|____|      |__| |_ unit
  addr       range
 ```
 * For example, for `FX29K0-040B-0010-L`:
 ```ruby
-FX29K fx29k(FX29K0, 0010, &Wire);
+FX29K fx29k(FX29K0, 0010, 'L', &Wire);
 ```
 #### Initialization
 * In `setup()`, initialize your object:

@@ -7,11 +7,12 @@
  * Check your load cell's part number:
  *
  *  FX29Kx-xxxx-xxxx-x
- *  |____|      |___|
- *	 addr       range
+ *  |____|      |___||_ unit
+ *	 addr       range 
  *
  * @param addr FX29 I2C address. For simplicity, directly type the first 6 characters of your load cell part number as parameter.
  * @param range FX29 load range.
+ * @param unit FX29 output unit, 'L' for pound-force and 'N' for newtons.
  * @param i2cPtr TwoWire object pointer.
  */
 FX29K::FX29K(uint8_t addr, uint8_t range, TwoWire* i2cPtr) {
@@ -20,21 +21,22 @@ FX29K::FX29K(uint8_t addr, uint8_t range, TwoWire* i2cPtr) {
   _i2cPtr = i2cPtr;
 }
 
-/**
- * @brief Construct a FX29K object instance.
- *
- * Check your load cell's part number:
- *
- *  FX29Kx-xxxx-xxxx-x
- *  |____|      |___|
- *	 addr       range
- *
- * @param addr FX29 I2C address. For simplicity, directly type the first 6 characters of your load cell part number as parameter.
- * @param range FX29 load range.
- */
 FX29K::FX29K(uint8_t addr, uint8_t range) {
   _i2cAddr = addr;
   _range = range;
+}
+
+FX29K::FX29K(uint8_t addr, uint8_t range, char unit, TwoWire* i2cPtr) {
+  _i2cAddr = addr;
+  _range = range;
+  _unit = unit;
+  _i2cPtr = i2cPtr;
+}
+
+FX29K::FX29K(uint8_t addr, uint8_t range, char unit) {
+  _i2cAddr = addr;
+  _range = range;
+  _unit = unit;
 }
 
 /**
@@ -105,7 +107,10 @@ uint16_t FX29K::getRawBridgeData(void) {
 float FX29K::getPounds(void) {
   uint16_t bridgeData = getRawBridgeData();
   uint32_t net = (bridgeData > _tare ? bridgeData - _tare : 0);
-  return (net * _range / 14000.0);
+  if(_unit == 'N')
+    return (net * 0.224809 * _range / 14000.0);  
+  else
+    return (net * _range / 14000.0);
 }
 
 /**
