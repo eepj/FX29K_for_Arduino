@@ -14,7 +14,7 @@ class FX29K{
   private:
     uint8_t _i2cAddr = FX29K0;
     uint8_t _range = 0010;
-    uint8_t _tare = 0;
+    uint16_t _tare = 0;
     TwoWire* _i2cPtr = &Wire;
     FX29K(void);
 
@@ -27,9 +27,9 @@ class FX29K{
     void tare(uint16_t samples);
     void requestMeasurement(void);
     uint16_t getRawBridgeData(void);
-    double getPounds(void);
-    double getKilograms(void);
-    uint16_t getGrams(void);
+    float getPounds(void);
+    float getKilograms(void);
+    float getGrams(void);
     void write(TwoWire* i2cPtr, uint8_t i2cAddr, uint8_t* arr, uint8_t byteCount);
     void read(TwoWire* i2cPtr, uint8_t i2cAddr, uint8_t* arr, uint8_t byteCount);
 

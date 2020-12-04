@@ -52,7 +52,6 @@ FX29K::~FX29K(void) {}
  */
 void FX29K::begin(void) {
   Wire.begin(_i2cAddr);
-  tare();
 }
 
 /**
@@ -77,9 +76,8 @@ void FX29K::tare(uint16_t samples) {
   uint32_t sum = 0;
   for (uint16_t i = 0; i < samples; i++) {
     sum += getRawBridgeData();
-    delay(10);
   }
-  _tare = sum / 10;
+  _tare = sum / samples;
 }
 
 /**
@@ -104,25 +102,26 @@ uint16_t FX29K::getRawBridgeData(void) {
  * @brief Get weight in pounds (lbs).
  * @return Weight, in pounds.
  */
-double FX29K::getPounds(void) {
+float FX29K::getPounds(void) {
   uint16_t bridgeData = getRawBridgeData();
-  uint16_t net = bridgeData - _tare;
-  if (net < 1000)
-    return 0.0;
-  else
-    return ((net - 1000) * _range / 14000.0);
-}
-
-double FX29K::getKilograms(void) {
-  return getPounds() / 2.205;
+  uint32_t net = (bridgeData > _tare ? bridgeData - _tare : 0);
+  return (net * _range / 14000.0);
 }
 
 /**
- * @brief Get weight in kilograms (kgs).
+ * @brief Get weight in kilograms (kg).
  * @return Weight, in kilograms.
  */
-uint16_t FX29K::getGrams(void) {
-  return getPounds() * 2205;
+float FX29K::getKilograms(void) {
+  return getPounds() * 0.453592;
+}
+
+/**
+ * @brief Get weight in grams (g).
+ * @return Weight, in grams.
+ */
+float FX29K::getGrams(void) {
+  return getPounds() * 453.592;
 }
 
 /**
