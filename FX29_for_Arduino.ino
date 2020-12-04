@@ -12,8 +12,8 @@ void setup(){
 
 void loop(){
   uint16_t raw = scale.getRawBridgeData();
-  float g = scale.getGrams();
-  float lb = scale.getPounds();
+  float g = scale.getGrams(1000);
+  float lb = scale.getPounds(1000);
   Serial.print(g, 1);
   Serial.print("\t");
   Serial.print(lb, 3);

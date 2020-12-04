@@ -34,6 +34,9 @@ class FX29K{
     float getPounds(void);
     float getKilograms(void);
     float getGrams(void);
+    float getPounds(uint16_t samples);
+    float getKilograms(uint16_t samples);
+    float getGrams(uint16_t samples);
     void write(TwoWire* i2cPtr, uint8_t i2cAddr, uint8_t* arr, uint8_t byteCount);
     void read(TwoWire* i2cPtr, uint8_t i2cAddr, uint8_t* arr, uint8_t byteCount);
 
