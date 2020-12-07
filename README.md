@@ -9,13 +9,17 @@ Supported models:
 FX292 and FX293 analog load cells are *NOT* supported.
 
 ## Quick start
-### Minimal connections
+### Minimal setup
 ```ruby
    RED ---------- VCC (2.7-5.5V)
 YELLOW ---------- SCL
  WHITE ---------- SDA
  BLACK ---------- GND
 ```
+### Installation
+* Download this repository as a `.zip` file.
+* In Arduino IDE, navigate to `Sketch` > `Include library` > `Add .zip library`.
+* Select the downloaded `.zip` file.
 ### Main Program
 #### Include
 * In your `.ino` file, include [`FX29K.h`](./FX29K.h):
