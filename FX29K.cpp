@@ -178,7 +178,7 @@ float FX29K::getGrams(uint16_t samples) {
    @param arr Array to write fetched data bytes to.
    @param byteCount Number of bytes to read.
 */
-void FX29K:: write(TwoWire* i2cPtr, uint8_t i2cAddr, uint8_t* arr, uint8_t byteCount) {
+void FX29K::write(TwoWire* i2cPtr, uint8_t i2cAddr, uint8_t* arr, uint8_t byteCount) {
   i2cPtr->beginTransmission(i2cAddr);
   for (uint8_t i = 0; i < byteCount; i++) {
     i2cPtr->write(*(arr + i));
