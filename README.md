@@ -57,9 +57,14 @@ uint16_t FX29K::getRawBridgeData(void);
 ```
 * Read weight with any of the following:
 ```ruby
+//Single sample
 float FX29K::getPounds(void);
 float FX29K::getKilograms(void);
 float FX29K::getGrams(void);
+//Average of n samples
+float FX29K::getPounds(uint16_t samples);
+float FX29K::getKilograms(uint16_t samples);
+float FX29K::getGrams(uint16_t samples);
 ```
 ### Misc
 * Refer to [`./FX29K_for_Arduino.ino`](./FX29_for_Arduino.ino) and [datasheets](https://www.te.com/commerce/DocumentDelivery/DDEController?Action=showdoc&DocId=Data+Sheet%7FFX29%7FA5%7Fpdf%7FEnglish%7FENG_DS_FX29_A5.pdf%7FCAT-FSE0006) for further information.
