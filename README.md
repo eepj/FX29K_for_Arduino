@@ -55,13 +55,14 @@ void FX29K::tare(uint16_t samples);
 ```ruby
 uint16_t FX29K::getRawBridgeData(void);
 ```
-* Read weight with any of the following:
+* Get one measurement:
 ```ruby
-//Single sample
 float FX29K::getPounds(void);
 float FX29K::getKilograms(void);
 float FX29K::getGrams(void);
-//Average of n samples
+```
+* Get average of n measurements:
+```ruby
 float FX29K::getPounds(uint16_t samples);
 float FX29K::getKilograms(uint16_t samples);
 float FX29K::getGrams(uint16_t samples);
