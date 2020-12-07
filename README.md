@@ -27,7 +27,7 @@ YELLOW ---------- SCL
 #include "FX29K.h"
 ```
 #### Declaration
-* Declare your object globally, with constructors:
+* Declare your `FX29K` object globally, with constructors:
 ```ruby  
 FX29K::FX29K(uint8_t addr, uint8_t range);
 FX29K::FX29K(uint8_t addr, uint8_t range, TwoWire* i2cPtr);
