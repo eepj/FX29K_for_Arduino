@@ -29,6 +29,7 @@ class FX29K{
     void begin(void);
     void tare(void);
     void tare(uint16_t samples);
+    uint16_t getTare(void);
     void requestMeasurement(void);
     uint16_t getRawBridgeData(void);
     float getPounds(void);

@@ -83,6 +83,14 @@ void FX29K::tare(uint16_t samples) {
 }
 
 /**
+  @brief Get the raw bridge data at tare weight.
+  @return Bridge data as a 14-bit number.
+ */
+uint16_t FX29K::getTare(void){
+  return _tare;  
+}
+
+/**
    @brief Device to start a measuremnet.
 */
 void FX29K::requestMeasurement(void) {
