@@ -105,7 +105,7 @@ void FX29K::requestMeasurement(void) {
 uint16_t FX29K::getRawBridgeData(void) {
   uint8_t bridgeData[2] = {0};
   read(_i2cPtr, _i2cAddr, bridgeData, 2);
-  return (bridgeData[0] << 8 | bridgeData[1]) & 0x3fff;
+  return (bridgeData[0] << 8 | bridgeData[1]);
 }
 
 /**
