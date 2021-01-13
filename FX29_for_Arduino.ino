@@ -4,7 +4,6 @@ FX29K scale(FX29K0, 0010, &Wire);
 
 void setup(){
   Serial.begin(115200);
-  scale.begin();
   scale.tare(1000);
   Serial.println("Grams\tPounds\tRaw");
   Serial.println("--------------------");

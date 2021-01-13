@@ -50,13 +50,6 @@ FX29K::FX29K(void) {}
 FX29K::~FX29K(void) {}
 
 /**
-   @brief Initialization function. To be called once in setup() before calling other methods.
-*/
-void FX29K::begin(void) {
-  _i2cPtr->begin(_i2cAddr);
-}
-
-/**
    @brief Tare the scale with the average of 10 samples.
 */
 void FX29K::tare(void) {
