@@ -180,11 +180,11 @@ float FX29K::getGrams(uint16_t samples) {
 }
 
 /**
-   @brief I2C read function.
+   @brief I2C write function.
    @param i2cPtr TwoWire object pointer.
-   @param i2cAddr I2C device address to read from.
-   @param arr Array to write fetched data bytes to.
-   @param byteCount Number of bytes to read.
+   @param i2cAddr I2C device address to write to.
+   @param arr Array containing data bytes to write.
+   @param byteCount Number of bytes to write.
 */
 void FX29K::write(TwoWire* i2cPtr, uint8_t i2cAddr, uint8_t* arr, uint8_t byteCount) {
   i2cPtr->beginTransmission(i2cAddr);
@@ -195,11 +195,11 @@ void FX29K::write(TwoWire* i2cPtr, uint8_t i2cAddr, uint8_t* arr, uint8_t byteCo
 }
 
 /**
-   @brief I2C write function.
+   @brief I2C read function.
    @param i2cPtr TwoWire object pointer.
-   @param i2cAddr I2C device address to write to.
-   @param arr Array containing data bytes to write.
-   @param byteCount Number of bytes to write.
+   @param i2cAddr I2C device address to read from.
+   @param arr Array to write fetched data bytes to.
+   @param byteCount Number of bytes to read.
 */
 void FX29K::read(TwoWire* i2cPtr, uint8_t i2cAddr, uint8_t* arr, uint8_t byteCount) {
   i2cPtr->requestFrom(i2cAddr, byteCount);
