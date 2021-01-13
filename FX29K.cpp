@@ -53,7 +53,7 @@ FX29K::~FX29K(void) {}
    @brief Initialization function. To be called once in setup() before calling other methods.
 */
 void FX29K::begin(void) {
-  Wire.begin(_i2cAddr);
+  _i2cPtr->begin(_i2cAddr);
 }
 
 /**
