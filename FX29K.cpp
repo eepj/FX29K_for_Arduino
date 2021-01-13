@@ -52,7 +52,7 @@ FX29K::~FX29K(void) {}
 /**
    @brief Tare the scale with the average of 10 samples.
 */
-void FX29K::tare(void) {
+uint16_t FX29K::tare(void) {
   requestMeasurement();
   uint32_t sum = 0;
   for (uint8_t i = 0; i < 10; i++) {
@@ -60,19 +60,21 @@ void FX29K::tare(void) {
     delay(10);
   }
   _tare = sum / 10;
+  return _tare;
 }
 
 /**
    @brief Tare the scale with the average of n samples.
    @param samples Number of samples to take.
 */
-void FX29K::tare(uint16_t samples) {
+uint16_t FX29K::tare(uint16_t samples) {
   requestMeasurement();
   uint32_t sum = 0;
   for (uint16_t i = 0; i < samples; i++) {
     sum += getRawBridgeData();
   }
   _tare = sum / samples;
+  return _tare;
 }
 
 /**

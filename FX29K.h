@@ -25,10 +25,9 @@ class FX29K{
     FX29K(uint8_t addr, uint8_t range, char unit);
     FX29K(uint8_t addr, uint8_t range, char unit, TwoWire* i2cPtr);
     ~FX29K(void);
-    
-    void begin(void);
-    void tare(void);
-    void tare(uint16_t samples);
+   
+    uint16_t tare(void);
+    uint16_t tare(uint16_t samples);
     uint16_t getTare(void);
     void requestMeasurement(void);
     uint16_t getRawBridgeData(void);
