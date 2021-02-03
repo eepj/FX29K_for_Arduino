@@ -22,24 +22,24 @@ class FX29K{
   public:
     FX29K(uint8_t addr, uint8_t range);
     FX29K(uint8_t addr, uint8_t range, TwoWire* i2cPtr);
-    FX29K(uint8_t addr, uint8_t range, char unit);
-    FX29K(uint8_t addr, uint8_t range, char unit, TwoWire* i2cPtr);
     ~FX29K(void);
    
     uint16_t tare(void);
     uint16_t tare(uint16_t samples);
+  
     uint16_t getTare(void);
+  
     void requestMeasurement(void);
+  
     uint16_t getRawBridgeData(void);
+  
     float getPounds(void);
     float getKilograms(void);
     float getGrams(void);
-    float getPounds(uint16_t samples);
-    float getKilograms(uint16_t samples);
-    float getGrams(uint16_t samples);
+  
     void write(TwoWire* i2cPtr, uint8_t i2cAddr, uint8_t* arr, uint8_t byteCount);
     void read(TwoWire* i2cPtr, uint8_t i2cAddr, uint8_t* arr, uint8_t byteCount);
-
+  
 };
 
 #endif
