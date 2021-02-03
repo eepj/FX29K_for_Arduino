@@ -10,9 +10,8 @@
     |____|      |___||_ unit
  	 addr       range
 
-   @param addr FX29 I2C address. For simplicity, directly type the first 6 characters of your load cell part number as parameter.
+   @param addr FX29 I2C address.
    @param range FX29 load range.
-   @param unit FX29 output unit, 'L' for pound-force and 'N' for newtons.
    @param i2cPtr TwoWire object pointer.
 */
 FX29K::FX29K(uint8_t addr, uint8_t range, TwoWire* i2cPtr) {
@@ -24,19 +23,6 @@ FX29K::FX29K(uint8_t addr, uint8_t range, TwoWire* i2cPtr) {
 FX29K::FX29K(uint8_t addr, uint8_t range) {
   _i2cAddr = addr;
   _range = range;
-}
-
-FX29K::FX29K(uint8_t addr, uint8_t range, char unit, TwoWire* i2cPtr) {
-  _i2cAddr = addr;
-  _range = range;
-  _unit = unit;
-  _i2cPtr = i2cPtr;
-}
-
-FX29K::FX29K(uint8_t addr, uint8_t range, char unit) {
-  _i2cAddr = addr;
-  _range = range;
-  _unit = unit;
 }
 
 /**
@@ -105,7 +91,6 @@ uint16_t FX29K::getRawBridgeData(void) {
 
 /**
    @brief Get weight in pounds (lbs).
-   @param samples Number of samples to take.
    @return Weight, in pounds.
 */
 float FX29K::getPounds(void) {
@@ -126,52 +111,20 @@ float FX29K::getPounds(void) {
     return (net * _range / 14000.0) * sign;
 }
 
-float FX29K::getPounds(uint16_t samples) {
-  uint32_t bridgeData = 0;
-  for (uint16_t i = 0; i < samples; i++) {
-    bridgeData += getRawBridgeData();
-  }
-  bridgeData /= samples;
-  uint32_t net = 0;
-  int8_t sign = 1;
-  if (bridgeData >= _tare) {
-    net = bridgeData - _tare;
-    sign = 1;
-  }
-  else {
-    net = _tare - bridgeData;
-    sign = -1;
-  }
-  if (_unit == 'N')
-    return (net * 0.224809 * _range / 14000.0) * sign;
-  else
-    return (net * _range / 14000.0) * sign;
-}
-
 /**
    @brief Get weight in kilograms (kg).
-   @param samples Number of samples to take.
    @return Weight, in kilograms.
 */
 float FX29K::getKilograms(void) {
   return getPounds() * 0.453592;
 }
 
-float FX29K::getKilograms(uint16_t samples) {
-  return getPounds(samples) * 0.453592;
-}
-
 /**
    @brief Get weight in grams (g).
-   @param samples Number of samples to take.
    @return Weight, in grams.
 */
 float FX29K::getGrams(void) {
   return getPounds() * 453.592;
-}
-
-float FX29K::getGrams(uint16_t samples) {
-  return getPounds(samples) * 453.592;
 }
 
 /**
