@@ -26,11 +26,6 @@ FX29K::FX29K(uint8_t addr, uint8_t range) {
 }
 
 /**
-   @brief Constructor, private by default.
-*/
-FX29K::FX29K(void) {}
-
-/**
    @brief Destructor.
 */
 FX29K::~FX29K(void) {}
