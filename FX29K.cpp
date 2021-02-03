@@ -100,10 +100,7 @@ float FX29K::getPounds(void) {
     net = _tare - bridgeData;
     sign = -1;
   }
-  if (_unit == 'N')
-    return (net * 0.224809 * _range / 14000.0) * sign;
-  else
-    return (net * _range / 14000.0) * sign;
+  return (net * _range / 14000.0) * sign;
 }
 
 /**
