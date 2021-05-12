@@ -1,5 +1,5 @@
 # FX29K_for_Arduino
-An Arduino library written for the FX29K digital load cells.
+An Arduino library for the FX29K digital load cells.
 
 ## Compatibility
 Supported models:
